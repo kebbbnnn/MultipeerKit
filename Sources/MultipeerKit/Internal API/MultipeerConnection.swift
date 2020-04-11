@@ -107,6 +107,11 @@ final class MultipeerConnection: NSObject, MultipeerProtocol {
         browser.invitePeer(peer.underlyingPeer, to: session, withContext: context, timeout: timeout)
     }
 
+    func browse(vc: UIViewController) {
+        let browser = MCBrowserViewController(serviceType: configuration.serviceType, session: session)
+        browser.delegate = self
+        vc.present(browser, animated: true, completion: nil)
+    }
 }
 
 // MARK: - Session delegate
@@ -224,4 +229,17 @@ extension MultipeerConnection: MCNearbyServiceAdvertiserDelegate {
         })
     }
 
+}
+
+// MARK: - Browser View Controller delegate
+
+extension MultipeerConnection: MCBrowserViewControllerDelegate {
+    
+    func browserViewControllerDidFinish(_ browserViewController: MCBrowserViewController) {
+        browserViewController.dismiss(animated: true, completion: nil)
+    }
+
+    func browserViewControllerWasCancelled(_ browserViewController: MCBrowserViewController) {
+        browserViewController.dismiss(animated: true, completion: nil)
+    }
 }

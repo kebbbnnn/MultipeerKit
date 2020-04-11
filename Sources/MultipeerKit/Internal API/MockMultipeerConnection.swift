@@ -1,4 +1,5 @@
 import Foundation
+import UIKit
 
 final class MockMultipeerConnection: MultipeerProtocol {
 
@@ -27,6 +28,10 @@ final class MockMultipeerConnection: MultipeerProtocol {
     }
 
     func invite(_ peer: Peer, with context: Data?, timeout: TimeInterval, completion: InvitationCompletionHandler?) {
+        
+    }
+    
+    func browse(vc: UIViewController) {
         
     }
 

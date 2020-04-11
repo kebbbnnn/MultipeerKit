@@ -1,4 +1,5 @@
 import Foundation
+import UIKit
 
 typealias PeerName = String
 
@@ -17,4 +18,5 @@ protocol MultipeerProtocol: AnyObject {
     func broadcast(_ data: Data) throws
     func send(_ data: Data, to peers: [Peer]) throws
 
+    func browse(vc: UIViewController)
 }

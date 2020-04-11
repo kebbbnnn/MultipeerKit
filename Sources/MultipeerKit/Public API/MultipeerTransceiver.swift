@@ -1,4 +1,5 @@
 import Foundation
+import UIKit
 import MultipeerConnectivity.MCPeerID
 import os.log
 
@@ -142,6 +143,10 @@ public final class MultipeerTransceiver {
     /// since the transceiver does the inviting automatically.
     public func invite(_ peer: Peer, with context: Data?, timeout: TimeInterval, completion: InvitationCompletionHandler?) {
         connection.invite(peer, with: context, timeout: timeout, completion: completion)
+    }
+    
+    public func browse(vc: UIViewController) {
+        connection.browse(vc: vc)
     }
 
     private func handlePeerAdded(_ peer: Peer) {
